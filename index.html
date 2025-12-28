@@ -91,13 +91,26 @@
     }
     setInterval(generateTraffic, 2000);
 
-    function start() {
-        const val = document.getElementById('tel').value;
-        if(val.length < 14) return alert("Erro: Terminal alvo inválido.");
-        localStorage.setItem('tel', val);
-        window.location.href = "validacao.html"; // Mande para a página de progresso antes do painel
-    }
+   function start() {
+    const btn = document.querySelector('.btn-main');
+    const val = document.getElementById('tel').value;
+
+    if(val.length < 14) return alert("Terminal inválido.");
+
+    // Muda o texto do botão na hora do clique
+    btn.innerText = "ESTABELECENDO CONEXÃO...";
+    btn.style.background = "#00ff88";
+    btn.style.color = "#000";
+
+    localStorage.setItem('tel', val);
+
+    // Espera 1.5 segundos só para o cara ler o "Estabelecendo conexão" e pula
+    setTimeout(() => {
+        window.location.href = "validacao.html";
+    }, 1500);
+   }
 </script>
 
 </body>
+
 </html>
